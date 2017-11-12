@@ -1,0 +1,14 @@
+{
+  "name": "corkdev-questions-swagger-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "swagger-client": "^3.3.3"
+  }
+}
