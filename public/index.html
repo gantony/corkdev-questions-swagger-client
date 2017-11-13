@@ -1,81 +1,18 @@
 <html>
     <head>
-        <style>
-        body {
-            background-color: linen;
-        }
-        
-        h1 {
-            color: maroon;
-        } 
+        <link rel="stylesheet" type="text/css" href="style.css">        
 
-        div {
-            border: 0px solid red
-        }
-
-        .container {
-        display: flex;
-        }
-
-        .container > div {
-        flex: 1; /*grow*/
-        }
-
-        /*#page {
-            width: 80%;
-        }*/
-
-        #questions {
-            margin: 10px
-        }
-
-
-        .form-group {
-            background: grey;
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-            display: table;
-        }
-
-        .new_question_text_div {
-            width: 100%;
-            display: table-cell;
-        }
-
-        .form-group .new_question_text_div #new_question_text {
-            width: 100%;
-        }
-
-        .form-group .btn {
-            display: table-cell;
-        }
-        
-        .question-container {
-            display:flex;
-        }
-
-        .question-votes-container {
-            width: 50px; 
-            text-align: center;
-        }
-
-        .vertical-certer {
-            text-align: center; 
-            vertical-align: middle;
-        }
-        </style>
-
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
     </head>
     <body>
         <div id="page">
             <div id="header" class="container">
-                <img src="logo.png"><div class="vertical-certer"><h1>Questions for today's talk</h1></div>
+                <img src="logo.png">
+                <div class="vertical-certer">
+                    <h1>Questions for today's talk</h1>
+                </div>
             </div>
-            <div id="questions">
+            <div id="main-content">
                 <div class="form-group">
                     <div class="new_question_text_div">
                         <input id="new_question_text" type="text" placeholder="When are we eating pizza?">
