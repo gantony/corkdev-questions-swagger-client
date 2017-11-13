@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "browserify test.js -o public/browser.test.js"
   },
   "author": "",
   "license": "ISC",
