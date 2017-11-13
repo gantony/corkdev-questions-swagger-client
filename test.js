@@ -1,7 +1,9 @@
-var Swagger = require('swagger-client')
+console.log("Before importig swagger...");
+
+var Swagger = require('swagger-client');
 
 
-console.log("Starting the test script...")
+console.log("Starting the test script...");
 
 
 /*
@@ -53,39 +55,45 @@ function MyApp (listener) {
     
     this.questions = new Questions(listener);
 
-    Swagger('http://127.0.0.1:4567/swagger.json')
-        .then(client => {
-            this.client = client;
+    var self = this;
+    Swagger('swagger.json')
+        .then(function(client) {
+            self.client = client;
 
-            this.updateQuestions();
+            self.client.http.withCredentials = true; // this activates CORS, if necessary
+
+            self.updateQuestions();
             // this.upvoteQuestion(4);
         });
 }
  
 MyApp.prototype.updateQuestions = function() {
+    var self = this;
     this.client.apis.public.listQuestions()
-        .then((result) => { 
-            this.questions.replace(result.obj);
-        }, (error) => { 
+        .then(function(result) { 
+            self.questions.replace(result.obj);
+        }, function(error) { 
             console.log("Error listing questions: ", error);
         });
 };
 
 MyApp.prototype.addQuestion = function(questionText) {
     var questionJson = JSON.stringify({question: questionText});
+    var self = this;
     this.client.apis.public.addQuestion({ question: questionJson })
-        .then((result) => { 
-            this.questions.add(result.obj);
-        }, (error) => { 
+        .then(function(result) { 
+            self.questions.add(result.obj);
+        }, function (error) { 
             console.log("Error adding a questions: ", error);
         });
 };
 
 MyApp.prototype.upvoteQuestion = function(questionId) {
+    var self = this;
     this.client.apis.public.upvote({ id: questionId })
-        .then((result) => {
-            this.questions.update(result.obj) 
-        }, (error) => { 
+        .then(function(result) {
+            self.questions.update(result.obj) 
+        }, function(error) { 
             console.log("Error upvoting questions: ", error);
         });
 };
@@ -100,5 +108,39 @@ ConsoleListener.prototype.onQuestionsChanged = function(questions) {
     console.log("Questions changed: ", questions)
 } 
 
-var consoleListener = new ConsoleListener();
-var myApp = new MyApp(consoleListener);
+function DOMListener(container) {
+    this.container = container;
+}
+
+DOMListener.prototype.setContainer = function(container) {
+    this.container = container;
+}
+
+DOMListener.prototype.onQuestionsChanged = function(questions) {
+    console.log("Questions changed: ", questions)
+    // https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+    while (this.container.firstChild) {
+        this.container.removeChild(this.container.firstChild);
+    }
+
+    questions.forEach(function(question) {
+        this.printQuestion(question, this.container);
+    }, this);
+}
+
+DOMListener.prototype.printQuestion = function(question) {
+    //var s = '<li>text</li>'; // HTML string
+
+    var div = document.createElement('div');
+    div.className = "question-container";
+    div.innerHTML = 
+        '<div class="question-votes-container"><button onclick="myApp.upvoteQuestion(' + question.id + ')">+</button><div>' + question.votes + '</div></div>' +
+        '<div class="vertical-certer">'+ question.question + '</div>';
+    
+    this.container.appendChild(div);
+    this.container.appendChild(document.createElement('br'));
+}
+
+consoleListener = new ConsoleListener();
+domListener = new DOMListener();
+myApp = new MyApp(domListener);
