@@ -1,9 +1,12 @@
 body {
-    background-color: linen;
+    background-color: #f7f3ea;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: #403329;
 }
 
 h1 {
-    color: maroon;
+    color: #cc000d;
 } 
 
 div {
