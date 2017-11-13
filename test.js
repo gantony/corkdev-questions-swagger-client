@@ -141,6 +141,9 @@ DOMListener.prototype.printQuestion = function(question) {
     this.container.appendChild(document.createElement('br'));
 }
 
+
+// TODO: Split test from main js so that both npm build and npm test work as expected...
+
 consoleListener = new ConsoleListener();
 domListener = new DOMListener();
 myApp = new MyApp(domListener);
