@@ -13,17 +13,15 @@
                 </div>
             </div>
             <div id="main-content">
-                <div class="form-group">
+                <div class="new-question">
                     <div class="new_question_text_div">
                         <input id="new_question_text" type="text" placeholder="When are we eating pizza?">
                     </div>
-                    <button type="submit" class="btn btn-default" onclick="newQuestion()">Ask!</button>
+                    <button class="btn" onclick="newQuestion()">Ask!</button>
                 </div>
                 <br />
 
-
-                <div id="dynamic_questions">
-
+                <div id="all-questions">
                 </div>
 
             </div>
@@ -36,7 +34,7 @@
             myApp.addQuestion(question);
         }
 
-        questionsContainer = document.getElementById("dynamic_questions");
+        questionsContainer = document.getElementById("all-questions");
         domListener.setContainer(questionsContainer);
 
         </script>

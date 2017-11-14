@@ -7,30 +7,25 @@ body {
 
 h1 {
     color: #cc000d;
-} 
+}
 
 div {
     border: 0px solid red
 }
 
 .container {
-display: flex;
+    display: flex;
 }
 
 .container > div {
-flex: 1; /*grow*/
+    flex: 1; /*grow*/
 }
-
-/*#page {
-    width: 80%;
-}*/
 
 #main-content {
     margin: 10px
 }
 
-
-.form-group {
+.new-question {
     background: grey;
     margin-top: 10px;
     margin-left: auto;
@@ -44,11 +39,11 @@ flex: 1; /*grow*/
     display: table-cell;
 }
 
-.form-group .new_question_text_div #new_question_text {
+.new-question .new_question_text_div #new_question_text {
     width: 100%;
 }
 
-.form-group .btn {
+.new-question .btn {
     display: table-cell;
 }
 
@@ -57,11 +52,11 @@ flex: 1; /*grow*/
 }
 
 .question-votes-container {
-    width: 50px; 
+    width: 50px;
     text-align: center;
 }
 
 .vertical-certer {
-    text-align: center; 
+    text-align: center;
     vertical-align: middle;
 }
