@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "concurrently --kill-others --success first http-server \"node test/test.js\"",
-    "build": "browserify src/index.js -o public/bundle.js"
+    "build": "browserify src/index.js -o public/bundle.js",
+    "start": "http-server"
   },
   "author": "",
   "license": "ISC",
