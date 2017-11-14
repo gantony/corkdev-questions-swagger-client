@@ -2,10 +2,10 @@
   "name": "corkdev-questions-swagger-client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node test.js",
-    "build": "browserify test.js -o public/browser.test.js"
+    "test": "concurrently --kill-others --success first http-server \"node test/test.js\"",
+    "build": "browserify src/index.js -o public/bundle.js"
   },
   "author": "",
   "license": "ISC",

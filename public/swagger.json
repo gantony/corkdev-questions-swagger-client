@@ -12,7 +12,7 @@
       "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host" : "192.168.1.28:4567",
+  "host" : "178.62.124.192:4567",
   "basePath" : "/gantony/CorkDevQuestions/1.0.0",
   "tags" : [ {
     "name" : "admins",
